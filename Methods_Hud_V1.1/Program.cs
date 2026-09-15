@@ -14,6 +14,7 @@ namespace Methods_Hud_V1._1
         static float CurrentShield;
         static int Lives = 2;
         static int CurrentLives;
+        static int score;
         static int CurrentScore;
         static ConsoleColor Originalcolor;
         static ConsoleColor HUDColor = ConsoleColor.DarkGreen;
@@ -25,6 +26,7 @@ namespace Methods_Hud_V1._1
             CurrentHealth = Health;
             CurrentShield = Shield;
             CurrentLives = Lives;
+            CurrentScore = score;
             Console.ForegroundColor = TextColor;
             ShowHUD();
             Console.ReadKey(true);
@@ -34,6 +36,8 @@ namespace Methods_Hud_V1._1
             Console.Clear();
             AddScore(3);
             ShowHUD();
+            Console.ReadKey(true);
+            Console.Clear();
             Console.ForegroundColor = Originalcolor;
         }
         static public void ShowHUD()
@@ -42,6 +46,7 @@ namespace Methods_Hud_V1._1
             Console.WriteLine("Health - " + CurrentHealth);
             Console.WriteLine("Shield - " + CurrentShield);
             Console.WriteLine("Lives - " + CurrentLives);
+            Console.WriteLine("Score - " + CurrentScore);
             Console.ForegroundColor = TextColor;
         }
         static public void TakeDamage(float IncomingDamage)
@@ -63,8 +68,9 @@ namespace Methods_Hud_V1._1
         static public void AddScore(int ScoreAdded)
         {
             Console.ForegroundColor = ScoreColor;
+            CurrentScore += ScoreAdded;
             Console.WriteLine("===================");
-            Console.WriteLine("Your Score Was Increased! - " + CurrentScore);
+            Console.WriteLine("Your Score Was Increased! + " + ScoreAdded);
             Console.WriteLine("===================");
             Console.ForegroundColor = TextColor;
         }
